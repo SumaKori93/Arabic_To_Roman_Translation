@@ -1,4 +1,4 @@
-# Arabic_To_Roman_Translation
+# Arabic numbers to Roman numerals translation
 
 ## Definition of the task
 
