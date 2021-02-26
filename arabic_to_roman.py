@@ -9,29 +9,31 @@
 from operator import itemgetter
 
 # tuples which contains Integer along with their roman representation
-items = [("I", 1), ("IV", 4), ("V", 5), ("IX", 9), ("X", 10), ("XL", 40), ("L", 50), ("XC", 90),
-         ("C", 100), ("CD", 400), ("D", 500), ("CM", 900), ("M", 1000)]
+mapped_numbers = [("I", 1), ("IV", 4), ("V", 5), ("IX", 9), ("X", 10), ("XL", 40), ("L", 50),
+                  ("XC", 90), ("C", 100), ("CD", 400), ("D", 500), ("CM", 900), ("M", 1000)]
 
 
 def arabic_to_roman(number):
     """This method is used to convert the arabic number to roman numeral
 
     :param: number
-    :type: str
+    :type: int
+    :rtype: str
 
     """
 
     roman_numeral = ''
-    i = 12
-    while number != 0:
-        roman = list(map(itemgetter(0), items))
-        arabic = list(map(itemgetter(1), items))
-        if arabic[i] <= number:
-            roman_numeral += roman[i]
-            number -= arabic[i]
+    # length of the list
+    len_mapped_numbers = len(mapped_numbers) - 1
 
+    while number != 0:
+        roman = list(map(itemgetter(0), mapped_numbers))
+        arabic = list(map(itemgetter(1), mapped_numbers))
+        if arabic[len_mapped_numbers] <= number:
+            roman_numeral += roman[len_mapped_numbers]
+            number -= arabic[len_mapped_numbers]
         else:
-            i = i-1
+            len_mapped_numbers = len_mapped_numbers - 1
 
     return roman_numeral
 
@@ -44,16 +46,16 @@ def main():
     """
 
     while True:
-        value = input("Please enter the input. Enter q to quit:")
+        value = input("Please enter a valid number or q to quit:")
         if value.isnumeric():
             if int(value) > 0:
                 print(arabic_to_roman(int(value)))
             else:
-                print("please enter the value grater than zero")
+                print("Please enter the value grater than zero")
         elif value in ('Q', 'q'):
             break
         else:
-            print("please enter a valid number.")
+            print("Given input is invalid. Try again")
 
 
 if __name__ == "__main__":
