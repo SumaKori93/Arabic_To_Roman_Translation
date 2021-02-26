@@ -8,16 +8,17 @@
 """
 from operator import itemgetter
 
-
-items = [("I", 1), ("IV", 4), ("V", 5), ("IX", 9), ("X", 10), ("XL", 40), ("L", 50), ("XC", 90), ("C", 100), ("CD", 400)
-     , ("D", 500), ("CM", 900), ("M", 1000)]
+# tuples which contains Integer along with their roman representation
+items = [("I", 1), ("IV", 4), ("V", 5), ("IX", 9), ("X", 10), ("XL", 40), ("L", 50), ("XC", 90), ("C", 100),
+         ("CD", 400), ("D", 500), ("CM", 900), ("M", 1000)]
 
 
 def arabic_to_roman(number):
     """This method is used to convert the arabic number to roman numeral
 
-    :param number
-    :type str
+    :param: number
+    :type: str
+
     """
 
     roman_numeral = ''
@@ -36,12 +37,24 @@ def arabic_to_roman(number):
 
 
 def main():
+    """This is the main method.
+
+    1. Check if given number is numeric
+    2. Check if given number is anything other than numeric. If q then quit.
+    """
+
     while True:
-        value = int(input("Please enter the input"))
-        if value > 0:
-            print(arabic_to_roman(value))
+        value = input("Please enter the input. Enter q to quit")
+        if value.isnumeric():
+            if int(value) > 0:
+                print(arabic_to_roman(int(value)))
+            else:
+                print("please enter the value grater than zero")
+        elif value == 'q' or value == 'Q':
+            break
         else:
-            print("please enter the value grater than zero")
+            print("please enter a valid number.")
+
 
 if __name__ == "__main__":
     main()
