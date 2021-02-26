@@ -9,8 +9,8 @@
 from operator import itemgetter
 
 # tuples which contains Integer along with their roman representation
-items = [("I", 1), ("IV", 4), ("V", 5), ("IX", 9), ("X", 10), ("XL", 40), ("L", 50), ("XC", 90), ("C", 100),
-         ("CD", 400), ("D", 500), ("CM", 900), ("M", 1000)]
+items = [("I", 1), ("IV", 4), ("V", 5), ("IX", 9), ("X", 10), ("XL", 40), ("L", 50), ("XC", 90),
+         ("C", 100), ("CD", 400), ("D", 500), ("CM", 900), ("M", 1000)]
 
 
 def arabic_to_roman(number):
@@ -44,13 +44,13 @@ def main():
     """
 
     while True:
-        value = input("Please enter the input. Enter q to quit")
+        value = input("Please enter the input. Enter q to quit:")
         if value.isnumeric():
             if int(value) > 0:
                 print(arabic_to_roman(int(value)))
             else:
                 print("please enter the value grater than zero")
-        elif value == 'q' or value == 'Q':
+        elif value in ('Q', 'q'):
             break
         else:
             print("please enter a valid number.")
